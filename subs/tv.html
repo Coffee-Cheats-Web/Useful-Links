@@ -1,0 +1,363 @@
+<!DOCTYPE html><html lang="en"><head>
+       <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Cheats - Movies and TV Shows Pirate List</title>
+<style>
+  /* ===== Global Styles ===== */
+  body {
+    margin: 0;
+    padding: 0;
+    background: radial-gradient(circle at top, #111, #000);
+    color: #f5f5f5;
+    font-family: "Segoe UI", Arial, sans-serif;
+    text-align: center;
+  }
+
+  a {
+    color: #ff3b3b;
+    text-decoration: none;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+  }
+  a:hover {
+    color: #ff5f5f;
+    text-shadow: 0 0 8px rgba(255, 59, 59, 0.7);
+  }
+
+  /* ===== Header ===== */
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+    margin-top: 25px;
+    position: relative;
+  }
+
+  .backup-container {
+    position: absolute;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .backup-button {
+    font-size: 11px;
+    background: rgba(255, 59, 59, 0.2);
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    border: 1px solid rgba(255, 59, 59, 0.5);
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+  }
+  .backup-button:hover {
+    background: rgba(255, 59, 59, 0.35);
+    color: #ff3b3b;
+    box-shadow: 0 0 12px rgba(255, 59, 59, 0.7);
+  }
+
+  .title-container h1 a {
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s ease;
+  }
+  .title-container h1 a:hover {
+    color: #ff3b3b;
+    text-shadow: 0 0 8px rgba(255, 59, 59, 0.7);
+  }
+
+  /* ===== Main Buttons ===== */
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+    height: 150px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: bold;
+    color: #ff3b3b;
+    background: rgba(255, 59, 59, 0.08);
+    border: 1px solid rgba(255, 59, 59, 0.4);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 6px 16px rgba(255, 59, 59, 0.35);
+    transition: all 0.3s ease;
+    text-align: center;
+  }
+  .button:hover {
+    background: rgba(255, 59, 59, 0.2);
+    color: #fff;
+    transform: translateY(-5px) scale(1.06);
+    box-shadow: 0 10px 24px rgba(255, 59, 59, 0.6);
+  }
+  .button img {
+    width: 100px;
+    height: 100px;
+    margin-right: 12px;
+    filter: drop-shadow(0 0 6px rgba(255, 59, 59, 0.6));
+    transition: transform 0.3s ease;
+  }
+  .button:hover img {
+    transform: scale(1.1) rotate(6deg);
+  }
+
+  /* ===== Play Buttons (Vertical) ===== */
+  .button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    max-width: 600px;
+    margin: 30px auto;
+  }
+
+  .play-button {
+    white-space: nowrap;
+    text-decoration: none;
+    background: rgba(255, 59, 59, 0.08);
+    color: #ff3b3b;
+    padding: 20px;
+    min-width: 250px;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    border: 1px solid rgba(255, 59, 59, 0.4);
+    backdrop-filter: blur(8px);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 6px 16px rgba(255, 59, 59, 0.35);
+  }
+  .play-button i {
+    font-size: 22px;
+  }
+  .play-button:hover {
+    background: rgba(255, 59, 59, 0.2);
+    color: #fff;
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 20px rgba(255, 59, 59, 0.55);
+  }
+  .play-button:active {
+    transform: translateY(2px) scale(0.98);
+    background: rgba(255, 59, 59, 0.3);
+  }
+
+  /* ===== Info Box ===== */
+  .info-container {
+    background: rgba(255, 59, 59, 0.05);
+    border-radius: 12px;
+    padding: 15px;
+    font-size: 14px;
+    font-weight: bold;
+    border: 1px solid rgba(255, 59, 59, 0.3);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 4px 12px rgba(255, 59, 59, 0.25);
+    margin: 20px auto;
+    max-width: 600px;
+  }
+  .info-container span {
+    color: #ff3b3b;
+  }
+
+  .back-button {
+  width: 180px;
+  height: 60px;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 20px;
+  border-radius: 15px;
+  text-align: center;
+  line-height: 60px;
+  background: rgba(255, 59, 59, 0.08);
+  border: 1px solid rgba(255, 59, 59, 0.4);
+  color: #ff3b3b;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 6px 16px rgba(255, 59, 59, 0.35);
+  transition: all 0.3s ease;
+}
+
+.back-button:hover {
+  background: rgba(255, 59, 59, 0.2);
+  color: #fff;
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 10px 20px rgba(255, 59, 59, 0.55);
+}
+
+
+</style>
+
+</head>
+<body>
+    </div>
+        <div class="container">
+            <div style="text-align: center;">
+</div>
+
+<a href="javascript:history.back()" class="button back-button">
+  ⬅ Back
+</a>
+    <div class="button-container">
+        <a href="https://hokejatv.com/home/" class="play-button" target="_blank">
+    <i class="fas fa-play"></i>soap2night.cc
+</a>
+
+<a href="https://dorawatch.net/home/" class="play-button" target="_blank">
+    <i class="fas fa-play"></i>dorawatch.net
+</a>
+
+<a href="https://wmovies.one/" class="play-button" target="_blank">
+    <i class="fas fa-play"></i>wmovies.one
+</a>
+
+<a href="https://www.goojara.to/" class="play-button" target="_blank">
+    <i class="fas fa-play"></i>goojara.to
+</a>
+
+<a href="https://myflixerz.to/" class="play-button" target="_blank">
+    <i class="fas fa-play"></i>myflixerz.to
+</a>
+
+<a href="https://hydrahd.ac/" class="play-button" target="_blank">
+    <i class="fas fa-play"></i>hydrahd.ac
+</a>
+
+<a href="https://www.cineby.app/" class="play-button" target="_blank">
+    <i class="fas fa-play"></i>cineby.app
+</a>
+
+<a href="https://watch.ug/" class="play-button" target="_blank">
+    <i class="fas fa-play"></i>watch.ug
+</a>
+
+<a href="https://mapple.tv/" class="play-button" target="_blank">
+    <i class="fas fa-play"></i>mapple.tv
+</a>
+
+<a href="https://popcornmovies.org/" class="play-button" target="_blank">
+    <i class="fas fa-play"></i>popcornmovies.org
+</a>
+
+<a href="https://gomovies.sx/" class="play-button" target="_blank">
+    <i class="fas fa-play"></i>gomovies.sx
+</a>
+
+<a href="https://onionplay.ch/" class="play-button" target="_blank">
+    <i class="fas fa-play"></i>onionplay.ch
+</a>
+
+<a href="https://www.lookmovie2.to/" class="play-button" target="_blank">
+    <i class="fas fa-play"></i>lookmovie2.to
+</a>
+
+<a href="https://pressplay.top/" class="play-button" target="_blank">
+    <i class="fas fa-play"></i>pressplay.top
+</a>
+
+<a href="https://moviesjoytv.to/" class="play-button" target="_blank">
+    <i class="fas fa-play"></i>moviesjoytv.to
+</a>
+
+<a href="https://fmovies.co/" class="play-button" target="_blank">
+    <i class="fas fa-play"></i>fmovies.co
+</a>
+
+<a href="https://ww10.soap2dayhd.co/" class="play-button" target="_blank">
+    <i class="fas fa-play"></i>soap2dayhd.co
+</a>
+
+<a href="https://projectfreetv.sx/" class="play-button" target="_blank">
+    <i class="fas fa-play"></i>projectfreetv.sx
+</a>
+
+<a href="https://sflix.to/" class="play-button" target="_blank">
+    <i class="fas fa-play"></i>sflix.to
+</a>
+
+<a href="https://theflixertv.to/" class="play-button" target="_blank">
+    <i class="fas fa-play"></i>theflixertv.to
+</a>
+
+<a href="https://hdtoday.tv/" class="play-button" target="_blank">
+    <i class="fas fa-play"></i>hdtoday.tv
+</a>
+
+<a href="https://flixhq.to/" class="play-button" target="_blank">
+    <i class="fas fa-play"></i>flixhq.to
+</a>
+
+<a href="https://hurawatch.cc/" class="play-button" target="_blank">
+    <i class="fas fa-play"></i>hurawatch.cc
+</a>
+
+<a href="https://broflix.si/" class="play-button" target="_blank">
+    <i class="fas fa-play"></i>broflix.si
+</a>
+
+<a href="https://ridomovies.tv/" class="play-button" target="_blank">
+    <i class="fas fa-play"></i>ridomovies.tv
+</a>
+
+<a href="https://ww4.123moviesfree.net/" class="play-button" target="_blank">
+    <i class="fas fa-play"></i>123moviesfree.net
+</a>
+
+<a href="https://hdtoday.cc/" class="play-button" target="_blank">
+    <i class="fas fa-play"></i>hdtoday.cc
+</a>
+
+<a href="https://vidplay.org/" class="play-button" target="_blank">
+    <i class="fas fa-play"></i>vidplay.org
+</a>
+
+<a href="https://putlocker.pe/" class="play-button" target="_blank">
+    <i class="fas fa-play"></i>putlocker.pe
+</a>
+
+<a href="https://gomoviestv.to/" class="play-button" target="_blank">
+    <i class="fas fa-play"></i>gomoviestv.to
+</a>
+
+<a href="https://ww.yesmovies.ag/" class="play-button" target="_blank">
+    <i class="fas fa-play"></i>yesmovies.ag
+</a>
+
+<a href="https://watchseries.pe/" class="play-button" target="_blank">
+    <i class="fas fa-play"></i>watchseries.pe
+</a>
+
+<a href="https://soaper.top/" class="play-button" target="_blank">
+    <i class="fas fa-play"></i>soaper.top
+</a>
+
+<a href="https://watch32.sx/" class="play-button" target="_blank">
+    <i class="fas fa-play"></i>watch32.sx
+</a>
+
+<a href="https://flickermini.pages.dev/" class="play-button" target="_blank">
+    <i class="fas fa-play"></i>flickermini.pages.dev
+</a>
+    </div>
+    </div>
+  <footer>
+    <h1></h1>
+    <a href="https://discord.gg/yuWwTcmQDH">Join our Discord</a> • &copy; 2025 Coffee Cheats
+  </footer>
+</body></html>
