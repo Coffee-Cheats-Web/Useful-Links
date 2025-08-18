@@ -10,7 +10,7 @@
     snowflake.style.left = startX + 'px';
 
     // random size
-    const size = Math.random() * 10 + 15;
+    const size = Math.random() * 7 + 15;
     snowflake.style.fontSize = size + 'px';
 
     // speed and drift
@@ -51,5 +51,6 @@
 
   // spawn 1 snowflake per second
   setInterval(createSnowflake, 110);
+
 
   updateSnowflakes();
