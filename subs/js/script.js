@@ -10,7 +10,7 @@
     snowflake.style.left = startX + 'px';
 
     // random size
-    const size = Math.random() * 7 + 15;
+    const size = Math.random() * 2 + 15;
     snowflake.style.fontSize = size + 'px';
 
     // speed and drift
@@ -54,3 +54,4 @@
 
 
   updateSnowflakes();
+
