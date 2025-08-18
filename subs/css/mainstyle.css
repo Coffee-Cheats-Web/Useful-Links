@@ -1,0 +1,192 @@
+    /* ===== Global Styles ===== */
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 110%;
+      background: radial-gradient(circle at top, #321818, #000);
+      color: #f5f5f5;
+      font-family: "Segoe UI", Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ===== Header (Logo + Title) ===== */
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      margin-bottom: 15px;
+      z-index: 200;
+    }
+
+    .header img {
+      height: 150px;
+      width: auto;
+      filter: drop-shadow(0 0 10px rgba(255, 59, 59, 0.6));
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-radius: 10px;
+    }
+    .header img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(255, 59, 59, 0.8);
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: #fff;
+      text-shadow: 0 0 10px rgba(255, 59, 59, 0.3);
+    }
+
+    p {
+      margin: 0 0 0px;
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+      z-index: 200;
+    }
+
+    a {
+      color: #ff3b3b;
+      text-decoration: none;
+      transition: color 0.3s ease, text-shadow 0.3s ease;
+      z-index: 200;
+    }
+    a:hover {
+      color: #ff5f5f;
+      text-shadow: 0 0 8px rgba(255, 59, 59, 0.7);
+    }
+
+    /* ===== Layout ===== */
+    .content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      max-height: 100%;
+      padding: 10px;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      max-width: 1000px;
+      padding: 0 20px;
+    }
+
+    /* ===== Buttons ===== */
+    .button {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 220px;
+      height: 150px;
+      border-radius: 25px;
+      font-size: 17px;
+      font-weight: bold;
+      color: #ff3b3b;
+      background: rgba(255, 59, 59, 0.08);
+      border: 1px solid rgba(255, 59, 59, 0.4);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 6px 16px rgba(255, 59, 59, 0.35);
+      transition: all 0.3s ease;
+      text-align: center;
+      z-index: 200;
+    }
+    .button:hover {
+      background: rgba(255, 59, 59, 0.2);
+      color: #fff;
+      transform: translateY(-5px) scale(1.06);
+      box-shadow: 0 10px 24px rgba(255, 59, 59, 0.6);
+    }
+    .button img {
+      width: 75px;
+      height: 75px;
+      margin-bottom: 10px;
+      filter: drop-shadow(0 0 6px rgba(255, 59, 59, 0.6));
+      transition: transform 0.3s ease;
+    }
+    .button:hover img {
+      transform: scale(1.1) rotate(6deg);
+    }
+
+footer {
+  font-size: 1.1rem;
+  opacity: 0.75;
+  margin-bottom: 12px;
+  z-index: 200;
+  text-align: center; /* center the entire footer content */
+}
+
+footer img {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  object-fit: cover;
+  vertical-align: middle;
+  margin-left: 6px;
+  position: relative;
+  top: -2px; /* moves it up by 3px */
+  left: -4px;
+}
+
+
+
+
+    /* ===== Responsive Adjustments ===== */
+    @media (max-height: 750px) {
+      .button {
+        width: 190px;
+        height: 130px;
+        font-size: 15px;
+      }
+      .button img {
+        width: 65px;
+        height: 65px;
+      }
+      .header img {
+        height: 50px;
+      }
+      .header h1 {
+        font-size: 2rem;
+      }
+    }
+
+  .snowflake {
+    position: fixed;
+    top: 0;
+    color: white;
+    user-select: none;
+    pointer-events: none;
+    z-index: 100;
+  }
+
+    @media (max-width: 600px) {
+      .header {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .header img {
+        height: 50px;
+      }
+      .header h1 {
+        font-size: 1.8rem;
+        text-align: center;
+      }
+      .button {
+        width: 160px;
+        height: 110px;
+        font-size: 14px;
+      }
+      .button img {
+        width: 55px;
+        height: 55px;
+      }
+    }
