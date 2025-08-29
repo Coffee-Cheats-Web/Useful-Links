@@ -26,7 +26,7 @@ html, body {
 }
 
 .header img {
-  height: 150px;
+  height: 135px;
   width: auto;
   filter: drop-shadow(0 0 10px rgba(255, 59, 59, 0.6));
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -39,7 +39,7 @@ html, body {
 
 .header h1 {
   margin: 0;
-  font-size: 2.4rem;
+  font-size: 2rem;
   font-weight: 900;
   color: #fff;
   text-shadow: 0 0 10px rgba(255, 59, 59, 0.3);
@@ -193,3 +193,4 @@ footer img {
     height: 55px;
   }
 }
+
