@@ -14,7 +14,7 @@ html, body {
   align-items: center;
 
   /* NEW → shrink everything */
-  transform: scale(0.9);
+  transform: scale(0.5);
   transform-origin: top center; /* keeps shrink centered at top */
 }
 
@@ -197,3 +197,4 @@ footer img {
     height: 55px;
   }
 }
+
