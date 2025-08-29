@@ -1,60 +1,57 @@
-/* ===== Reset & Utilities ===== */
+/* ===== Reset & basic ===== */
 * { box-sizing: border-box; }
 html, body {
   margin: 0;
   padding: 0;
+  height: auto;
   min-height: 100%;
   color: #f5f5f5;
   font-family: "Segoe UI", Arial, sans-serif;
-  background-color: #000; /* fallback color */
+  background-color: #000; /* fallback */
 }
 
-/* ===== Full-page gradient background (fixed, never cuts off) ===== */
+/* ===== Gradient that grows with the page (won't cut off) =====
+   We use body::before as an absolute element covering the entire body.
+   This follows the document height (so scrolling reveals more of the gradient). */
+body {
+  position: relative;   /* container for the absolute pseudo-element */
+  min-height: 100vh;
+}
+
+/* Replace any previous body::before / html::before / body background rules with this */
 body::before {
   content: "";
-  position: fixed;
-  inset: 0;                 /* top:0; right:0; bottom:0; left:0; */
-  z-index: -100;            /* sits behind everything */
+  position: absolute;   /* follows body height, not just viewport */
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;          /* behind page content */
   pointer-events: none;
   background: radial-gradient(ellipse at top, #321818 0%, #000 100%);
   background-repeat: no-repeat;
-  background-attachment: fixed;
   background-size: cover;
-  will-change: transform;
-  -webkit-transform: translateZ(0);
+  /* don't set background-attachment: fixed here — we want the gradient to extend with the page */
 }
 
-/* ===== Page wrapper & layout =====
-   Use <div class="page"> as the outer wrapper of your content.
-   This keeps vertical centering while allowing the page to grow. */
+/* ===== Page wrapper (keeps vertical centering when short) =====
+   Use an outer wrapper like <div class="page"> around your content (optional) */
 .page {
-  min-height: 100vh;        /* ensures at least full viewport height */
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;  /* center vertically when content is short */
+  justify-content: center;
   padding: 20px 10px;
 }
 
-/* ===== Global content area ===== */
-.content {
-  flex: 1 0 auto;           /* grow when needed, don't force a fixed height */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  width: 100%;
-  max-width: 1000px;
-  padding: 10px;
-}
-
-/* ===== Header (Logo + Title) ===== */
+/* ===== Your original styles (preserved, minor tweaks) ===== */
 .header {
   display: flex;
   align-items: center;
   gap: 40px;
   margin-bottom: 15px;
-  z-index: 200;
+  z-index: 1;
 }
 .header img {
   height: 150px;
@@ -75,25 +72,35 @@ body::before {
   text-shadow: 0 0 10px rgba(255, 59, 59, 0.3);
 }
 
-/* ===== Paragraphs and links ===== */
 p {
   margin: 0 0 0px;
   font-size: 1.3rem;
   margin-bottom: 15px;
-  z-index: 200;
+  z-index: 1;
 }
 a {
   color: #ff3b3b;
   text-decoration: none;
   transition: color 0.3s ease, text-shadow 0.3s ease;
-  z-index: 200;
+  z-index: 1;
 }
 a:hover {
   color: #ff5f5f;
   text-shadow: 0 0 8px rgba(255, 59, 59, 0.7);
 }
 
-/* ===== Container ===== */
+.content {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 1000px;
+  padding: 10px;
+  z-index: 1;
+}
+
 .container {
   display: flex;
   flex-wrap: wrap;
@@ -102,10 +109,9 @@ a:hover {
   width: 100%;
   max-width: 1000px;
   padding: 0 20px;
-  z-index: 200;
+  z-index: 1;
 }
 
-/* ===== Buttons ===== */
 .button {
   display: flex;
   flex-direction: column;
@@ -123,7 +129,7 @@ a:hover {
   box-shadow: 0 6px 16px rgba(255, 59, 59, 0.35);
   transition: all 0.3s ease;
   text-align: center;
-  z-index: 200;
+  z-index: 1;
 }
 .button:hover {
   background: rgba(255, 59, 59, 0.2);
@@ -142,15 +148,12 @@ a:hover {
   transform: scale(1.1) rotate(6deg);
 }
 
-/* ===== Footer =====
-   Use margin-top: auto on the footer container so it sits at the bottom
-   when the page is taller than the viewport. */
 footer {
   font-size: 1.1rem;
   opacity: 0.75;
   margin-top: 12px;
   margin-bottom: 12px;
-  z-index: 200;
+  z-index: 1;
   text-align: center;
   width: 100%;
   max-width: 1000px;
@@ -170,53 +173,25 @@ footer img {
   left: -4px;
 }
 
-/* ===== Snowflake (fixed decorations) ===== */
 .snowflake {
   position: fixed;
   top: 0;
   color: white;
   user-select: none;
   pointer-events: none;
-  z-index: 100;
+  z-index: 50;
 }
 
-/* ===== Responsive Adjustments ===== */
 @media (max-height: 750px) {
-  .button {
-    width: 190px;
-    height: 130px;
-    font-size: 15px;
-  }
-  .button img {
-    width: 65px;
-    height: 65px;
-  }
-  .header img {
-    height: 50px;
-  }
-  .header h1 {
-    font-size: 2rem;
-  }
+  .button { width: 190px; height: 130px; font-size: 15px; }
+  .button img { width: 65px; height: 65px; }
+  .header img { height: 50px; }
+  .header h1 { font-size: 2rem; }
 }
 @media (max-width: 600px) {
-  .header {
-    flex-direction: column;
-    gap: 10px;
-  }
-  .header img {
-    height: 50px;
-  }
-  .header h1 {
-    font-size: 1.8rem;
-    text-align: center;
-  }
-  .button {
-    width: 160px;
-    height: 110px;
-    font-size: 14px;
-  }
-  .button img {
-    width: 55px;
-    height: 55px;
-  }
+  .header { flex-direction: column; gap: 10px; }
+  .header img { height: 50px; }
+  .header h1 { font-size: 1.8rem; text-align: center; }
+  .button { width: 160px; height: 110px; font-size: 14px; }
+  .button img { width: 55px; height: 55px; }
 }
